@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+</head>
+
+<body>
+    <h1>Counter</h1>
+    <h5>Number of times you have visited this page: {{ request.session.visit_counter }}</h5>
+    <h5>Counter (Use number input to add to it): {{ request.session.number_counter }}</h5>
+    <form action="/add_number" method="post">
+        {% csrf_token %}
+        <input type="number" name="increment_number" id="increment_number">
+        <button type="submit">Add to Counter</button>
+    </form>
+    <form action="/destroy_session">
+        <button type="submit">Reset Visits Counter</button>
+    </form>
+</body>
+
+</html>
